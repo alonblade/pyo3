@@ -42,6 +42,7 @@ fn ensure_target_architecture(interpreter_config: &InterpreterConfig) -> Result<
     // Similarly, sys.maxsize is not reliable on Windows. See
     // https://stackoverflow.com/questions/1405913/how-do-i-determine-if-my-python-shell-is-executing-in-32bit-or-64bit-mode-on-os/1405971#comment6209952_1405971
     // and https://stackoverflow.com/a/3411134/823869.
+    /*
     let python_target = match interpreter_config.calcsize_pointer {
         Some(8) => "64-bit",
         Some(4) => "32-bit",
@@ -59,6 +60,7 @@ fn ensure_target_architecture(interpreter_config: &InterpreterConfig) -> Result<
         rust_target,
         python_target
     );
+    */
 
     Ok(())
 }
