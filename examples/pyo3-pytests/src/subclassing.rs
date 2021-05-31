@@ -13,6 +13,18 @@ impl Subclassable {
     }
 }
 
+#[pyclass(subclass)]
+pub struct SubclassableWithParameter {}
+
+#[pymethods]
+impl SubclassableWithParameter {
+    #[new]
+    fn new(foo: bool) -> Self {
+        SubclassableWithParameter {}
+    }
+}
+
+
 #[pyproto]
 impl pyo3::PyObjectProtocol for Subclassable {
     fn __str__(&self) -> PyResult<&'static str> {
@@ -23,5 +35,6 @@ impl pyo3::PyObjectProtocol for Subclassable {
 #[pymodule]
 fn subclassing(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_class::<Subclassable>()?;
+    m.add_class::<SubclassableWithParameter>()?;
     Ok(())
 }
